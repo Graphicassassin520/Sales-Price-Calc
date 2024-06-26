@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Price Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sales Price Calculator</h1>
+        <div class="input-group">
+            <label for="salesPrice">Sales Price:</label>
+            <input type="text" id="salesPrice" placeholder="Enter sales price" aria-label="Sales Price">
+            <span id="salesPriceError" class="error" role="alert"></span>
+        </div>
+        <div class="input-group">
+            <label for="apr">Select APR:</label>
+            <select id="apr" aria-label="Annual Percentage Rate">
+                <option value="0">0%</</option>
+                <option value="9.9">9.9%</</option>
+                <option value="12.9">12.9%</</option>
+                <option value="16.9" selected>16.9%</option>
+            </select>
+            <span id="aprError" class="error" role="alert"></span>
+        </div>
+        <div class="input-group">
+            <label for="numPayments">Number of Payments:</label>
+            <select id="numPayments" aria-label="Number of Payments">
+                <option value="12">12</option>
+                <option value="84">84</option>
+                <option value="120" selected>120</option>
+            </select>
+            <span id="numPaymentsError" class="error" role="alert"></span>
+        </div>
+        <div class="results">
+            <p>Down Payment: $<span id="downPayment">0.00</span></p>
+            <p>Monthly Payment: $<span id="monthlyPayment">0.00</span></p>
+        </div>
+        <button id="clearButton">Clear</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
