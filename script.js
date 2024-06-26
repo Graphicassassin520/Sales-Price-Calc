@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadStoredValues();
 
     function formatCurrency(value) {
-        return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+        return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
     }
 
     function parseCurrency(value) {
@@ -114,11 +114,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function attachEventListeners() {
-        salesPriceInput.addEventListener('input', () => {
-            const formattedValue = formatCurrency(parseCurrency(salesPriceInput.value));
-            salesPriceInput.value = formattedValue;
-            updatePayments();
+        salesPriceInput.addEventListener('input', updatePayments);
+
+        salesPriceInput.addEventListener('blur', () => {
+            const value = parseCurrency(salesPriceInput.value);
+            salesPriceInput.value = value ? formatCurrency(value) : '';
         });
+
         aprSelect.addEventListener('change', updatePayments);
         numPaymentsSelect.addEventListener('change', updatePayments);
         clearButton.addEventListener('click', clearInputs);
